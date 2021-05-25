@@ -1,0 +1,12 @@
+<table border="1px">
+  <thead>
+    <tr>
+      <th *ngFor="let head of tableConfig.headers">{{head.label}}</th>
+    </tr>
+    </thead>
+  <tbody>
+  <tr *ngFor="let body of data">
+    <td>{{body}}</td>
+  </tr>
+  </tbody>
+</table>
