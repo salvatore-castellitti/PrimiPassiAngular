@@ -1,12 +1,16 @@
-<table border="1px">
-  <thead>
-    <tr>
-      <th *ngFor="let head of tableConfig.headers">{{head.label}}</th>
-    </tr>
+<div class="table-responsive">
+  <table border="1px">
+    <thead>
+      <tr>
+        <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
+      </tr>
     </thead>
-  <tbody>
-  <tr *ngFor="let body of data">
-    <td>{{body}}</td>
-  </tr>
-  </tbody>
-</table>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let index of tableConfig.headers">
+          <span>{{row[index.label]}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

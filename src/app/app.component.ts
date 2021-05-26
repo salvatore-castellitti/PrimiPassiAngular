@@ -16,21 +16,42 @@ export class AppComponent {
     icon: 'home'
   };
 
-  data = ["mario", "giordano"];
+  person1: persons = {
+    name: "mario",
+    surname: "bianchi",
+    taxCode: "AAAA",
+  }
+  person2: persons = {
+    name: "alberto",
+    surname: "rossi",
+    taxCode: "bbbb",
+  }
+  person3: persons = {
+    name: "filippo",
+    surname: "verdi",
+    taxCode: "cccc",
+  }
+
+  data = [
+    this.person1,
+    this.person2,
+    this.person3,
+  ];
 
   tableConfig = {
     headers: [
-      {key: "1",
+      {key: "name",
         label: "name",
       },
-      {key: "2",
-        label: "Surname",
+      {key: "surname",
+        label: "surname",
       },
     ]
   }
+}
 
-
-
-
-
+class persons {
+  name: string;
+  surname: string;
+  taxCode: string;
 }
