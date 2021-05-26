@@ -2,8 +2,16 @@
   <table border="1px">
     <thead>
       <tr>
-        <th *ngFor="let header of tableConfig.headers">
+        <th class="tableHeader" *ngFor="let header of tableConfig.headers" (click)="sort(header.key, booleanValue)">
           {{header.label}}
+          <span class="material-icons" *ngIf="booleanValue === false; else elseBlock">
+            arrow_upward
+          </span>
+          <ng-template #elseBlock>
+            <span class="material-icons">
+              arrow_downward
+            </span>
+          </ng-template>
         </th>
       </tr>
     </thead>
