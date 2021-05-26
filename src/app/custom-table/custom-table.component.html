@@ -2,13 +2,15 @@
   <table border="1px">
     <thead>
       <tr>
-        <th *ngFor="let header of tableConfig.headers">{{header.label}}</th>
+        <th *ngFor="let header of tableConfig.headers">
+          {{header.label}}
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of data">
         <td *ngFor="let index of tableConfig.headers">
-          <span>{{row[index.label]}}</span>
+          <span>{{row[index.key]}}</span>
         </td>
       </tr>
     </tbody>
