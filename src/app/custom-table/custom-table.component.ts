@@ -14,17 +14,18 @@ export class CustomTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.sort(this.tableConfig.order.defaultColumn,this.tableConfig.order.orderType)
   }
 
-  booleanValue: any = false;
-  sort(headerKey, booleanValue) {
-    if(booleanValue == true){
-      this.data.sort((a,b) => a[headerKey] < b[headerKey] ? 1 : a[headerKey] > b[headerKey] ? -1 : 0)
-      this.booleanValue = !this.booleanValue
+  sort(defaultColumn, type) {
+    this.tableConfig.order.defaultColumn = defaultColumn
+    if(type === "asc"){
+      this.data.sort((a,b) => a[defaultColumn] < b[defaultColumn] ? 1 : a[defaultColumn] > b[defaultColumn] ? -1 : 0)
+      this.tableConfig.order.orderType = "desc"
     }
     else{
-      this.data.sort((a,b) => a[headerKey] > b[headerKey] ? 1 : a[headerKey] < b[headerKey] ? -1 : 0)
-      this.booleanValue = !this.booleanValue
+      this.data.sort((a,b) => a[defaultColumn] > b[defaultColumn] ? 1 : a[defaultColumn] < b[defaultColumn] ? -1 : 0)
+      this.tableConfig.order.orderType = "asc"
 
     }
   }
@@ -34,13 +35,13 @@ export class MyHeaders {
   key: string;
   label: string;
 }
-//
-// export class MyOrder{
-//   defaultColumn: string;
-//   orderType: string;
-// }
+
+export class MyOrder{
+  defaultColumn: string;
+  orderType: string;
+}
 
 export class MyTableConfig{
   headers: MyHeaders[];
-  // order : MyOrder;
+  order : MyOrder;
 }

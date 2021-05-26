@@ -2,16 +2,19 @@
   <table border="1px">
     <thead>
       <tr>
-        <th class="tableHeader" *ngFor="let header of tableConfig.headers" (click)="sort(header.key, booleanValue)">
+        <th class="tableHeader" *ngFor="let header of tableConfig.headers" (click)="sort(header.key, tableConfig.order.orderType)">
           {{header.label}}
-          <span class="material-icons" *ngIf="booleanValue === false; else elseBlock">
-            arrow_upward
-          </span>
-          <ng-template #elseBlock>
-            <span class="material-icons">
-              arrow_downward
+          <span class="material-icons" *ngIf="tableConfig.order.defaultColumn === header.key">
+            <span class="material-icons" *ngIf="tableConfig.order.orderType === 'desc'; else elseBlock">
+              arrow_upward
             </span>
-          </ng-template>
+
+            <ng-template #elseBlock>
+              <span class="material-icons">
+                arrow_downward
+              </span>
+            </ng-template>
+          </span>
         </th>
       </tr>
     </thead>

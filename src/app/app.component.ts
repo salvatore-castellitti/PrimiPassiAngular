@@ -32,6 +32,11 @@ export class AppComponent {
     taxCode: "cccc",
   }
 
+  order: MyOrder = {
+    defaultColumn: "name",
+    orderType:"asc"
+  }
+
   data = [
     this.person1,
     this.person2,
@@ -40,13 +45,11 @@ export class AppComponent {
 
   tableConfig = {
     headers: [
-      {key: "name",
-        label: "name",
-      },
-      {key: "surname",
-        label: "surname",
-      },
-    ]
+      {key: "name", label: "First Name",},
+      {key: "surname", label: "Last Name",},
+      {key: "taxCode", label: "Tax Code",},
+    ],
+    order: this.order
   }
 
 }
@@ -55,4 +58,9 @@ class persons {
   name: string;
   surname: string;
   taxCode: string;
+}
+
+class MyOrder{
+  defaultColumn: string;
+  orderType: string;
 }
