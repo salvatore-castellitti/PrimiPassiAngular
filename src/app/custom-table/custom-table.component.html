@@ -1,4 +1,12 @@
-<div class="table-responsive">
+<!--MySearch-->
+<div>
+  <select [(ngModel)]="searchCol">
+    <option  *ngFor="let searchColumn of tableConfig.search.columns" >{{searchColumn}}</option>
+  </select>
+  <input type="text" [(ngModel)]="searchValue" id="search">
+</div>
+
+<div>
   <table border="1px">
     <thead>
       <tr>
@@ -19,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of data">
+      <tr *ngFor="let row of data | searchFilter:searchCol:searchValue">
         <td *ngFor="let index of tableConfig.headers">
           <span>{{row[index.key]}}</span>
         </td>

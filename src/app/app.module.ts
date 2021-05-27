@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
 import { TessstComponent } from './tessst/tessst.component';
 import { CustomTableComponent } from './custom-table/custom-table.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CustomTableComponent } from './custom-table/custom-table.component';
     CustomButtonComponent,
     TessstComponent,
     CustomTableComponent,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,

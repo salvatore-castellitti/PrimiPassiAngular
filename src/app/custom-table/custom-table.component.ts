@@ -11,6 +11,9 @@ export class CustomTableComponent implements OnInit {
   @Input() tableConfig: MyTableConfig;
   @Input() data: any[];
 
+  searchCol: string;
+  searchValue: string;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -41,7 +44,12 @@ export class MyOrder{
   orderType: string;
 }
 
+export class MySearch {
+  columns: string[]
+}
+
 export class MyTableConfig{
   headers: MyHeaders[];
   order : MyOrder;
+  search : MySearch;
 }

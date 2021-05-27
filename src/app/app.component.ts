@@ -37,6 +37,10 @@ export class AppComponent {
     orderType:"asc"
   }
 
+  search: MySearch = {
+    columns: ["name", "surname"]
+  }
+
   data = [
     this.person1,
     this.person2,
@@ -49,7 +53,8 @@ export class AppComponent {
       {key: "surname", label: "Last Name",},
       {key: "taxCode", label: "Tax Code",},
     ],
-    order: this.order
+    order: this.order,
+    search: this.search
   }
 
 }
@@ -63,4 +68,8 @@ class persons {
 class MyOrder{
   defaultColumn: string;
   orderType: string;
+}
+
+class MySearch {
+  columns: string[]
 }
