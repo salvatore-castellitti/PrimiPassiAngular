@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Pipe} from '@angular/core';
 
 
 @Component({
@@ -13,12 +13,22 @@ export class CustomTableComponent implements OnInit {
 
   searchCol: string;
   searchValue: string;
+  totalPage: number;
+  totalPageArray: any[];
+  activePage;
 
-  constructor() { }
+  constructor() {
+    this.totalPageArray = Array(this.totalPage).fill(0).map((x,i) =>i);
+    console.log(this.totalPageArray)
+  }
 
   ngOnInit(): void {
     this.sort(this.tableConfig.order.defaultColumn,this.tableConfig.order.orderType)
+    this.totalPage = Math.floor(this.data.length/this.tableConfig.pagination.itemPerPage)+1;
+    this.totalPageArray = Array(this.totalPage).fill(0).map((x,i) =>i);
   }
+
+
 
   sort(defaultColumn, type) {
     this.tableConfig.order.defaultColumn = defaultColumn
@@ -48,8 +58,14 @@ export class MySearch {
   columns: string[]
 }
 
+export class MyPagination{
+  itemPerPage: number;
+  itemPerPageOptions: number[];
+}
+
 export class MyTableConfig{
   headers: MyHeaders[];
   order : MyOrder;
   search : MySearch;
+  pagination: MyPagination;
 }

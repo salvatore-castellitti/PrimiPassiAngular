@@ -1,4 +1,5 @@
-<!--MySearch-->
+<!--MySearch Filter-->
+Filter:
 <div>
   <select [(ngModel)]="searchCol">
     <option  *ngFor="let searchColumn of tableConfig.search.columns" >{{searchColumn}}</option>
@@ -27,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of data | searchFilter:searchCol:searchValue">
+      <tr *ngFor="let row of data | searchFilter:searchCol:searchValue | pagination:tableConfig.pagination.itemPerPage:activePage">
         <td *ngFor="let index of tableConfig.headers">
           <span>{{row[index.key]}}</span>
         </td>
@@ -35,3 +36,22 @@
     </tbody>
   </table>
 </div>
+
+<!--Pagination-->
+<br>
+Items Per Page:
+<div>
+  <select [(ngModel)]="tableConfig.pagination.itemPerPage">
+    <option  *ngFor="let itemPerPage of tableConfig.pagination.itemPerPageOptions" >{{itemPerPage}}</option>
+  </select>
+</div>
+
+Select Page:
+<div>
+  <select [(ngModel)]="activePage">
+    <option  *ngFor="let pages of totalPageArray | amountPagesTable:data:tableConfig.pagination.itemPerPage">{{pages+1}}</option>
+  </select>
+</div>
+
+
+

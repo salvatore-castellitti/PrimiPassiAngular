@@ -8,6 +8,8 @@ import { CustomButtonComponent } from './custom-button/custom-button.component';
 import { TessstComponent } from './tessst/tessst.component';
 import { CustomTableComponent } from './custom-table/custom-table.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { PaginationPipe } from './pagination.pipe';
+import { AmountPagesTablePipe } from './amount-pages-table.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
     TessstComponent,
     CustomTableComponent,
     SearchFilterPipe,
+    PaginationPipe,
+    AmountPagesTablePipe,
   ],
   imports: [
     BrowserModule,

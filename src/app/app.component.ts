@@ -16,6 +16,7 @@ export class AppComponent {
     icon: 'home'
   };
 
+
   person1: persons = {
     name: "mario",
     surname: "bianchi",
@@ -45,7 +46,18 @@ export class AppComponent {
     this.person1,
     this.person2,
     this.person3,
+    this.person1,
+    this.person2,
+    this.person3,
+    this.person1,
+    this.person2,
+    this.person3,
   ];
+
+  pagination: MyPagination= {
+    itemPerPage: 4,
+    itemPerPageOptions: [4,8,12]
+  }
 
   tableConfig = {
     headers: [
@@ -54,7 +66,8 @@ export class AppComponent {
       {key: "taxCode", label: "Tax Code",},
     ],
     order: this.order,
-    search: this.search
+    search: this.search,
+    pagination: this.pagination
   }
 
 }
@@ -72,4 +85,9 @@ class MyOrder{
 
 class MySearch {
   columns: string[]
+}
+
+class MyPagination{
+  itemPerPage: number;
+  itemPerPageOptions: number[];
 }
