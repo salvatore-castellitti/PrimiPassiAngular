@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MyTableConfig} from "./custom-table/custom-table.component";
+import {MyButtonConfig} from "./custom-button/custom-button.component";
 
 
 
@@ -10,12 +11,33 @@ import {MyTableConfig} from "./custom-table/custom-table.component";
 })
 export class AppComponent {
   title = 'TestAngular';
-  MyCustomConfig = {
+
+
+//button declaration
+  testButton = {
     customCssClass: null,
     text: 'Prova',
     icon: 'home'
   };
 
+  //button Config
+  insertButton = {
+    customCssClass: null,
+    text: 'Insert',
+    icon: 'new_label',
+  }
+
+  deleteButton = {
+    customCssClass: null,
+    text: 'Delete',
+    icon: 'delete',
+  }
+
+  updateButton = {
+    customCssClass: null,
+    text: 'Update',
+    icon: 'settings',
+  }
 
   person1: persons = {
     name: "mario",
@@ -59,6 +81,8 @@ export class AppComponent {
     itemPerPageOptions: [4,8,12]
   }
 
+  actions = [this.insertButton,this.updateButton,this.deleteButton]
+
   tableConfig = {
     headers: [
       {key: "name", label: "First Name",},
@@ -67,7 +91,8 @@ export class AppComponent {
     ],
     order: this.order,
     search: this.search,
-    pagination: this.pagination
+    pagination: this.pagination,
+    actions:this.actions
   }
 
 }
@@ -91,3 +116,6 @@ class MyPagination{
   itemPerPage: number;
   itemPerPageOptions: number[];
 }
+
+
+

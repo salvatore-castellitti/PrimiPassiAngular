@@ -25,12 +25,19 @@ Filter:
             </ng-template>
           </span>
         </th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of data | searchFilter:searchCol:searchValue | pagination:tableConfig.pagination.itemPerPage:activePage">
         <td *ngFor="let index of tableConfig.headers">
           <span>{{row[index.key]}}</span>
+        </td>
+        <div class="inline">
+          <app-custom-button *ngFor="let action of tableConfig.actions" [buttonConfig]="action" (click)="actionButtons([action.text, row])" class="swd-button">
+          </app-custom-button>
+        </div>
+        <td>
         </td>
       </tr>
     </tbody>
@@ -52,6 +59,16 @@ Select Page:
     <option  *ngFor="let pages of totalPageArray | amountPagesTable:data:tableConfig.pagination.itemPerPage">{{pages+1}}</option>
   </select>
 </div>
+
+<app-custom-button [buttonConfig]="insertButton">
+
+</app-custom-button>
+<app-custom-button [buttonConfig]="updateButton">
+
+</app-custom-button>
+<app-custom-button [buttonConfig]="deleteButton">
+
+</app-custom-button>
 
 
 

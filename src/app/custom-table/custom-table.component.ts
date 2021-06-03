@@ -1,5 +1,7 @@
 import {Component, Input, OnInit, Pipe} from '@angular/core';
-
+import { Output, EventEmitter } from '@angular/core';
+import{InsertButton} from "../config/config";
+import {MyButtonConfig} from "../custom-button/custom-button.component";
 
 @Component({
   selector: 'app-custom-table',
@@ -10,6 +12,10 @@ export class CustomTableComponent implements OnInit {
 
   @Input() tableConfig: MyTableConfig;
   @Input() data: any[];
+  @Output() actionEvent = new EventEmitter<any[]>();
+
+
+
 
   searchCol: string;
   searchValue: string;
@@ -17,10 +23,29 @@ export class CustomTableComponent implements OnInit {
   totalPageArray: any[];
   activePage;
 
-  constructor() {
-    this.totalPageArray = Array(this.totalPage).fill(0).map((x,i) =>i);
-    console.log(this.totalPageArray)
+  //button Config
+  insertButton = {
+    customCssClass: null,
+    text: 'Insert',
+    icon: 'new_label',
   }
+
+  deleteButton = {
+    customCssClass: null,
+    text: 'Delete',
+    icon: 'delete',
+  }
+
+  updateButton = {
+    customCssClass: null,
+    text: 'Update',
+    icon: 'settings',
+  }
+
+
+  constructor() {
+  }
+
 
   ngOnInit(): void {
     this.sort(this.tableConfig.order.defaultColumn,this.tableConfig.order.orderType)
@@ -41,6 +66,11 @@ export class CustomTableComponent implements OnInit {
       this.tableConfig.order.orderType = "asc"
 
     }
+  }
+
+  actionButtons(action: any[]) {
+    this.actionEvent.emit(action)
+    console.log(action)
   }
 }
 
@@ -68,4 +98,7 @@ export class MyTableConfig{
   order : MyOrder;
   search : MySearch;
   pagination: MyPagination;
+  actions:MyButtonConfig[];
 }
+
+
